@@ -57,8 +57,6 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: "latest"
-        name: Release ${{ github.ref }}
         body_path: ./CHANGELOG.md
         draft: false
         prerelease: false
