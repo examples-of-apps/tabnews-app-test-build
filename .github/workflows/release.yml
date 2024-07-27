@@ -24,29 +24,20 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up JDK
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v4
       with:
-        distribution: 'zulu'
-        java-version: '11'
-
-    - name: Cache Gradle packages
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-
+        distribution: 'microsoft'
+        java-version: '21'
+        cache: 'gradle'
+        cache-dependency-path: |
+          sub-project/*.gradle*
+          sub-project/**/gradle-wrapper.properties
+          
     - name: Build the app
-      run: ./gradlew assembleRelease
-
-    - name: Generate changelog
-      run: npx auto-changelog
+      run: ./gradlew assembleRelease --no-daemon
 
     - name: Create Release
       id: create_release
