@@ -21,6 +21,11 @@ baf89cd - Update release.yml (Albert the fluent, 2024-07-27)
 e13a23e - uploading project (HarukaYamamoto0, 2024-07-26)
 d7243d2 - now it is possible to read post (HarukaYamamoto0, 2024-07-26)
 8abab5d - post viewer almost configured (HarukaYamamoto0, 2024-07-26)
+## [v3.0.8] - 2024-07-28
+### :bug: Bug Fixes
+- [`684f793`](https://github.com/examples-of-apps/tabnews-app-test-build/commit/684f793f5f04dc2b0bb1a9296a6b03f847c71db3) - la199191919199191 *(commit by [@HarukaYamamoto0](https://github.com/HarukaYamamoto0))*
+
+
 ## [v3.0.7] - 2024-07-28
 ### :bug: Bug Fixes
 - [`999b356`](https://github.com/examples-of-apps/tabnews-app-test-build/commit/999b3562c1d535537ced4361835ecedb830f8596) - test1 *(commit by [@HarukaYamamoto0](https://github.com/HarukaYamamoto0))*
@@ -28,3 +33,4 @@ d7243d2 - now it is possible to read post (HarukaYamamoto0, 2024-07-26)
 - [`4a0ccba`](https://github.com/examples-of-apps/tabnews-app-test-build/commit/4a0ccba9b5aabe1bdaf429c25f3a7bb73142936b) - test3 *(commit by [@HarukaYamamoto0](https://github.com/HarukaYamamoto0))*
 
 [v3.0.7]: https://github.com/examples-of-apps/tabnews-app-test-build/compare/v3.0.6...v3.0.7
+[v3.0.8]: https://github.com/examples-of-apps/tabnews-app-test-build/compare/v3.0.7...v3.0.8
