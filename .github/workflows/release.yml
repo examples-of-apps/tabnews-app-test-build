@@ -41,10 +41,21 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
       run: ./gradlew assembleRelease --no-daemon --stacktrace
 
-    - name: "✏️ Generate release changelog"
-      uses: heinrichreimer/action-github-changelog-generator@v2.3
+    - name: Get previous tag
+      id: previousTag
+      run: |
+        name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -2 | head -1)
+        echo "previousTag: $name
+        echo "previousTag=$name" >> $GITHUB_ENV
+
+    - name: Update CHANGELOG
+      id: changelog
+      uses: requarks/changelog-action@v1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ github.token }}
+        fromTag: ${{ github.ref_name }}
+        toTag: ${{ env.previousTag }}
+        writeToFile: false
     
     - name: Release
       uses: softprops/action-gh-release@v2
