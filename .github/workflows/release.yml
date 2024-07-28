@@ -41,8 +41,10 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
       run: ./gradlew assembleRelease --no-daemon --stacktrace
 
-    - name: Generate Changelog
-      run: git log --pretty=format:"%h - %s (%an, %ad)" --date=short > CHANGELOG.md
+    - name: "✏️ Generate release changelog"
+      uses: heinrichreimer/action-github-changelog-generator@v2.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Release
       uses: softprops/action-gh-release@v2
