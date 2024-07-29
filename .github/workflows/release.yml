@@ -41,19 +41,14 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
       run: ./gradlew assembleRelease --no-daemon --stacktrace
 
-    - name: Get previous tag
-      id: previousTag
-      run: |
-        name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -2 | head -1)
-        echo "previousTag: $name"
-        echo "previousTag=$name" >> $GITHUB_ENV
-
-    - name: Update CHANGELOG
-      id: changelog
-      uses: requarks/changelog-action@v1
-      with:
-        token: ${{ github.token }}
-        tag: ${{ github.ref_name }}
+    - name: Create Changelog
+    - uses: release-drafter/release-drafter@v6
+        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        # with:
+        #   config-name: my-config.yml
+        #   disable-autolabeler: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Release
       uses: softprops/action-gh-release@v2
@@ -63,10 +58,3 @@ jobs:
         draft: false
         prerelease: false
         files: app/build/outputs/apk/release/app-release.apk
-
-    - name: Commit CHANGELOG.md
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        branch: main
-        commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
-        file_pattern: CHANGELOG.md
