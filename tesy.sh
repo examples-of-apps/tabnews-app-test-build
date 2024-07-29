@@ -1,3 +1,4 @@
+get() {
 local randomTxt1 = $RANDOM
 local randomTxt2 = $RANDOM
 local randomTxt3 = $RANDOM
@@ -22,3 +23,6 @@ git ci feat: $randomTxt4
 rm -rf test*
 git add .
 git ci fix: remove files
+}
+
+get
