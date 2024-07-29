@@ -1,7 +1,7 @@
-randomTxt1 = $RANDOM
-randomTxt2 = $RANDOM
-randomTxt3 = $RANDOM
-randomTxt4 = $RANDOM
+local randomTxt1 = $RANDOM
+local randomTxt2 = $RANDOM
+local randomTxt3 = $RANDOM
+local randomTxt4 = $RANDOM
 
 echo $randomTxt1 > test1.txt
 git add .
